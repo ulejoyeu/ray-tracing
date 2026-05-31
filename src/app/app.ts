@@ -1,8 +1,7 @@
-import { AfterContentInit, AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TextareaModule } from 'primeng/textarea';
-import { tap, zip } from 'rxjs';
 import SceneInfos from './models/scene-infos';
 import Material from './models/material';
 import Sphere from './models/sphere';
@@ -47,20 +46,10 @@ export class App implements AfterViewInit {
   httpClient = inject(HttpClient);
 
   ngAfterViewInit(): void {
-    // console.log('init')
-    // this.httpClient.get('obs_screen.txt', { responseType: 'text' as 'json'}).subscribe(
-    //   obsScreen => {
-    //     console.log({obsScreen});
-    //     this.obsScreen = obsScreen.toString();
-    //   }
-    // );
-
     this.ctx = this.canvas.nativeElement.getContext('2d');
   }
 
   generateImage() {
-    // const sceneDetails = this.readText(this.scene);
-    // console.log(sceneDetails);
     this.computeSceneInfos();
     this.computeObsScreenInfos();
 
@@ -94,7 +83,6 @@ export class App implements AfterViewInit {
 
         const pix: Vector3 = sum(sum(Cs, multScal(i, vc)), multScal(j,vl));
         const color: Color = pixColor(obs, pix, source, LS, LT, mats, amb, groundColor, this.sign, this.white);
-        // console.log(`rgb(${color.red}, ${color.green}, ${color.blue})`);
 
         this.ctx.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`;
         this.ctx.fillRect(j * this.scale, i * this.scale, this.scale, this.scale);
@@ -112,7 +100,6 @@ export class App implements AfterViewInit {
     const nbSpheres = Number(firstLine[1]);
     const nbTriangles = Number(firstLine[2])
     const nbLights = Number(firstLine[3]);
-    // console.log({nbMaterials, nbSpheres, nbTriangles, nbLights});
 
     sceneInfos.amb = Number(lines.get('line 1')![0]);
 
@@ -168,7 +155,6 @@ export class App implements AfterViewInit {
       }
     }]
 
-    // console.log(sceneInfos);
     this.sceneInfos = sceneInfos;
   }
 
@@ -199,7 +185,6 @@ export class App implements AfterViewInit {
       z: Number(lines.get('line 4')![2]),
     };
 
-    // console.log(obsScreenInfos);
     this.obsScreenInfos = obsScreenInfos;
   }
 

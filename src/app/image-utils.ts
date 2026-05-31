@@ -11,9 +11,7 @@ export function pixColor(
     mats: Material[], amb: number, groundColor: Color, sign: boolean = false, white: boolean = false): Color {
 
     const intersection: ObjectIntersection|null = interLineObjects(obs, pix, LS, LT);
-    // console.log({intersection});
     if (intersection === null) {
-        // TODO: sign false
         return groundColor;
     }
     else {
@@ -25,7 +23,6 @@ export function pixColor(
                 const alpha = intersection.parameter;
                 const P = dotLine(obs, pix, alpha);
                 const L = source.position;
-                // TODO: fix hidden function
                 if (hidden(P, L, LS, LT)) {
                     if (white) return {red: 255, green: 255, blue: 255};
                     return {
