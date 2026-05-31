@@ -68,9 +68,10 @@ export function interLineSphere(A: Vector3, B: Vector3, C: Vector3, r: number): 
     if (delta === -1) {
         return null;
     } else if (delta === 0) {
-        return sol1;
+        return sol1! >= 0 ? sol1 : null;
     }
-    return Math.min(sol1!, sol2!);
+    const res = Math.min(sol1!, sol2!);
+    return res >= 0 ? res : null;
 }
 
 export function interLineObjects(A1: Vector3, A2: Vector3, LS: Sphere[], LT: any[], hidden: boolean = false): ObjectIntersection|null {

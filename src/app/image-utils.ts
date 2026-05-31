@@ -26,7 +26,7 @@ export function pixColor(
                 const P = dotLine(obs, pix, alpha);
                 const L = source.position;
                 // TODO: fix hidden function
-                if (false && hidden(P, L, LS, LT)) {
+                if (hidden(P, L, LS, LT)) {
                     if (white) return {red: 255, green: 255, blue: 255};
                     return {
                         red: amb * source.intensity.red * sphereColor.red,
