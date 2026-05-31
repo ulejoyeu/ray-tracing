@@ -62,9 +62,7 @@ export function nvector(A: Vector3, B: Vector3): Vector3 {
 export function interLineSphere(A: Vector3, B: Vector3, C: Vector3, r: number): number|null {
     const AB = vector(A, B);
     const CA = vector(C, A);
-    // const [delta, sol1, sol2] = solveSecond(dotProd(AB,AB), 2*dotProd(AB,CA), dotProd(CA,CA)- r*r);
     const [delta, sol1, sol2] = solveSecond(dotProd(AB,AB), 2*dotProd(AB,CA), dotProd(CA,CA) - r*r);
-    // if (Number.isNaN(sol1) || Number.isNaN(sol2)) console.log(A, B, C);
     if (delta === -1) {
         return null;
     } else if (delta === 0) {
@@ -96,7 +94,6 @@ export function interLineObjects(A1: Vector3, A2: Vector3, LS: Sphere[], LT: any
             }  
         }
     }
-    // if (objectIntersection === null) console.log('null intersection');
     return objectIntersection;
 }
 
