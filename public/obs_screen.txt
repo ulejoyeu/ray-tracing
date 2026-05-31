@@ -1,5 +1,0 @@
-200 200 // nombre de pixel par ligne et par colonne
-9 -1 3 // Un coin particulier de l'écran, plus exactement : le centre de ce coin
-0.1 0 0 // vecteur ligne de l'écran
-0 0 0.1 // vecteur colonne de l'écran
-20 -100 15 //Observateur
