@@ -1,0 +1,36 @@
+main {
+    width: 800px;
+    margin: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-line {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.form-group-line-element {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+#canvas {
+    background-color: black;
+}
